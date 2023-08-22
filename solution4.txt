@@ -1,0 +1,21 @@
+import csv
+empdata = [(1, "sai", 3500),(2, "om", 4000),(3, "radha", 3800),(4, "ram", 4100),(5, "sita", 4200)]
+with open('salary.csv', mode='w', newline='') as file:
+    writer = csv.writer(file)
+    writer.writerow(['sid', 'sname', 'salary'])
+    writer.writerows(empdata)
+with open('salary.csv', mode='r',newline='') as file:
+    reader = csv.reader(file)
+    records = list(reader)
+snames = [record for record in records if record[1].startswith('s') or record[1].startswith('S')]
+scount = len(snames)
+rog= len(records)
+for record in snames:
+    print(','.join(record))
+print(f'Number of "S" names is {scount}/{rog}')
+
+#output
+sid,sname,salary
+1,sai,3500
+5,sita,4200
+Number of "S" names is 3/6
